@@ -59,6 +59,27 @@ export const Protect = ({ children, ...rest }: ProtectProps) => {
   return children;
 };
 
+export const Show = ({
+  when,
+  fallback,
+  children,
+}: {
+  when?: unknown;
+  fallback?: React.ReactNode;
+  children: React.ReactNode;
+}) => {
+  const isSignedIn = isJwtValid(getJwtToken());
+  let shouldShow = true;
+  if (when === 'signed-in') shouldShow = isSignedIn;
+  else if (when === 'signed-out') shouldShow = !isSignedIn;
+  // permission/role/function gates: community mode has no RBAC — render.
+  return <>{shouldShow ? children : fallback ?? null}</>;
+};
+
+export const ClerkLoaded = ({ children }: { children: React.ReactNode }) => {
+  return <>{children}</>;
+};
+
 export function ClerkProvider({ children }: any) {
   const value = {};
 

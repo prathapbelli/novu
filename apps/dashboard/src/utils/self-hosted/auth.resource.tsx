@@ -13,6 +13,8 @@ export function AuthContextProvider({ children }: any) {
   const value = {
     currentUser: createUserFromJwt(decodedJwt),
     has: () => true,
+    isLoaded: true,
+    isSignedIn: !!decodedJwt,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
