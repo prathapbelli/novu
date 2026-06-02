@@ -29,7 +29,7 @@ export function createUserFromJwt(decodedJwt: DecodedJwt | null): SelfHostedUser
     createdAt: new Date(),
     publicMetadata: { newDashboardOptInStatus: 'opted_in' },
     unsafeMetadata: { newDashboardOptInStatus: 'opted_in' },
-    organizationMemberships: [{}],
+    organizationMemberships: [],
     passwordEnabled: true,
   };
 }

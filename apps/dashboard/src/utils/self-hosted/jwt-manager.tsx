@@ -4,6 +4,14 @@ export function getJwtToken(): string | null {
   return localStorage.getItem(JWT_STORAGE_KEY);
 }
 
+export function setJwtToken(token: string): void {
+  localStorage.setItem(JWT_STORAGE_KEY, token);
+}
+
+export function clearJwtToken(): void {
+  localStorage.removeItem(JWT_STORAGE_KEY);
+}
+
 export function isJwtValid(token: string | null): boolean {
   if (!token) return false;
 

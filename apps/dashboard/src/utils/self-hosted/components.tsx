@@ -4,8 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from '../../components/primitives/button';
 import { Input } from '../../components/primitives/input';
 import { API_HOSTNAME } from '../../config';
-
-const JWT_STORAGE_KEY = 'self-hosted-jwt';
+import { setJwtToken } from './jwt-manager';
 
 export function OrganizationList() {
   return <></>;
@@ -47,7 +46,7 @@ export function SignIn() {
       }
 
       if (data.data.token) {
-        localStorage.setItem(JWT_STORAGE_KEY, data.data.token);
+        setJwtToken(data.data.token);
         (window as any).Clerk = { ...((window as any).Clerk || {}), loggedIn: true };
         navigate('/');
       } else {
@@ -206,7 +205,7 @@ export function SignUp() {
       }
 
       if (data.data.token) {
-        localStorage.setItem(JWT_STORAGE_KEY, data.data.token);
+        setJwtToken(data.data.token);
         (window as any).Clerk = { ...((window as any).Clerk || {}), loggedIn: true };
         navigate('/');
       } else {

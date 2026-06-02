@@ -18,6 +18,7 @@ export const QueryKeys = Object.freeze({
   fetchTopics: 'fetchTopics',
   fetchRequestLogs: 'fetchRequestLogs',
   myOrganization: 'myOrganization',
+  organizationsList: 'organizationsList',
   organizationSettings: 'organizationSettings',
   fetchLayouts: 'fetchLayouts',
   fetchLayout: 'fetchLayout',
